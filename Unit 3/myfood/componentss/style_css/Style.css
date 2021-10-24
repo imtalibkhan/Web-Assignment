@@ -1,0 +1,30 @@
+#navbar {
+
+    display: flex;
+    justify-content: space-between;
+    padding-left: 4%;
+    padding-right: 4%;
+    border: 1px solid blue;
+  }
+
+  #options {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1600px;
+  }
+
+  #options h3 {
+    padding-left: 30px;
+    padding-right: 20px;
+
+  }
+  #container{
+    max-width: 1600px;
+    min-width: 300px;
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    gap: 10px;
+  }
+body{
+  background-color: aqua;
+}
