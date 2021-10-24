@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+          border-radius: 50px;
+            border: 2px solid rgb(255, 14, 14);
+            margin-top: 10px;
+            margin-left: 30%;
+            
+            height: 5;
+            width: 300px;
+        }
+        button{
+           
+            margin-left: 40.5%;
+            border-radius: 50px;
+            height: 50px;
+            width: 200px;
+            border: 3px solid gold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body style="background-color: gray;">
+ <h1></h1>
+  <input type="text" id="name" placeholder="enter the name"><br>
+  <input type="number"  id="age" placeholder="enter the age"><br>
+  <button onclick="Register()">register</button>
+</body>
+</html>
+<script>
+    var queue = ["raju","shayam","abutalib","samaira","raju","shayam","mohan","abdul"];
+
+
+    var vaccine = 9;
+
+      var count = queue.length+1;
+
+    var line = document.querySelector("h1")
+
+    function Register(){
+
+     var name = document.getElementById("name").value;
+
+        var age = document.getElementById("age").value;
+        
+         if(vaccine==0){
+            alert("out of stock, visit tommorow");
+         }
+         else{
+         if(age>70){
+             queue.unshift(name);
+             
+         }
+         else {
+         queue.push(name);
+         let msg = '${name} your reg successful. now go stand';
+         alert (msg);
+         }
+        }
+        
+         let promise = new Promise(function(resolve,reject) {
+            let interval = setInterval(function(){
+                if(vaccine==0){
+                    clearInterval(interval);
+                }
+               else if(queue[0]===name){
+
+               resolve('${name} its your turn now!');
+              
+            }
+        },1000);
+           
+        });
+        promise.then(function(res){
+
+            alert(res);
+        });
+    }
+
+
+    function startVactination(){
+        
+        queue.shift();
+        vaccine--;
+        count--;
+        line.textContent="number:"+count;
+        if(vaccine == 0){
+
+          clearInterval(interval);  
+        }
+        else if(queue.length==0){
+              
+        }
+        console.log("Queue:",queue);
+
+        console.log("Vaccine:" ,vaccine)
+    }
+    
+    
+
+    let interval =  setInterval(startVactination,3000);
+</script>
