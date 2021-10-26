@@ -5,12 +5,16 @@
     padding-left: 4%;
     padding-right: 4%;
     border: 1px solid blue;
+    border-radius: 23px;
+
   }
 
   #options {
     display: flex;
     justify-content: space-between;
     max-width: 1600px;
+    border: 2px solid red;
+    border-radius: 20px;
   }
 
   #options h3 {
@@ -24,6 +28,12 @@
     display: grid;
     grid-template-columns: 30% 30% 30%;
     gap: 10px;
+    border: 1px solid orange;
+    border-radius: 23px;
+  }
+  #container2{
+    width: 300px;
+    height: 300px;
   }
 body{
   background-color: aqua;
