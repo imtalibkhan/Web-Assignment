@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+  <link rel="stylesheet" href="componentss/style_css/style.css" />
+</head>
+<body>
+  
+  <div id="navbar"></div>
+
+  <div id="container2"></div>
+</body>
+</html>
+
+<script type="module">
+
+import navbar from "./componentss/navbar.js"
+//console.log(navbar)
+import {getData, append} from "./SCRIPTS/random.js";
+
+let navbar_div=document.getElementById("navbar");
+
+navbar_div.innerHTML = navbar();
+
+let response = getData(`https://www.themealdb.com/api/json/v1/1/random.php`)
+console.log(response);
+
+response.then((resp)=>{
+  let container= document.getElementById("container2");
+  console.log("resp:", resp)
+  
+
+  append(resp, container)
+ 
+})
+.catch((err)=>{
+  console.log(err)
+
+})
+
+//https://www.themealdb.com/api/json/v1/1/randomselection.php
+//www.themealdb.com/api/json/v1/1/categories.php
+
+
+
+
+
+
+</script>
