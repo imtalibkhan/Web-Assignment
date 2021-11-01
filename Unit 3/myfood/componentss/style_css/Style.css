@@ -2,6 +2,7 @@
 
     display: flex;
     justify-content: space-between;
+    max-width: 1600px;
     padding-left: 4%;
     padding-right: 4%;
     border: 1px solid blue;
@@ -34,6 +35,16 @@
   #container2{
     width: 300px;
     height: 300px;
+  }
+  #data{
+    max-width: 100%;
+    min-width: 100%;
+    
+    
+    
+    border: 1px solid orange;
+    border-radius: 23px;
+    margin: 5%;
   }
 body{
   background-color: aqua;

@@ -16,10 +16,16 @@
     <div id="meals" class="meals"></div>
 </form>
   
+  
   <div id="navbar"></div>
 
-  <div id="container"></div>
+  <div id="container4"></div>
   
+
+  <div id="data"></div>
+  
+  <a href="latest.html">latest</a>
+
 </body>
 </html>
 
@@ -27,21 +33,22 @@
 
 import navbar from "./componentss/navbar.js"
 //console.log(navbar)
-import {getData, append} from "./SCRIPTS/showdataa.js";
+import {getfood, showfood} from "./SCRIPTS/search.js";
+
 
 let navbar_div=document.getElementById("navbar");
 
 navbar_div.innerHTML = navbar();
 
-let response = getData(`https://www.themealdb.com/api/json/v1/1/categories.php`)
+let response = getfood(`https://www.themealdb.com/api/json/v1/1/search.php?s=${food}`)
 console.log(response);
 
-response.then((res)=>{
-  let container= document.getElementById("container");
-  console.log("res:", res)
+response.then((resp)=>{
+  let container1= document.getElementById("container4");
+  console.log("resp:", resp)
   
 
-  append(res.categories, container)
+  showfood(resp.meals)
  
 })
 .catch((err)=>{
@@ -51,5 +58,10 @@ response.then((res)=>{
 
 //https://www.themealdb.com/api/json/v1/1/randomselection.php
 //www.themealdb.com/api/json/v1/1/categories.php
+
+
+
+
+
 
 </script>

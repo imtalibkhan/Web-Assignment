@@ -9,7 +9,7 @@ async function getData(url){
     let res = await fetch(url)
     let data = await res.json()
 
-    return data.categories;
+    return data;
 }
 
 function append(data, container){
@@ -37,6 +37,32 @@ function append(data, container){
     })
 }
 
-export {getData,append}
+
+function append1(data, container){
+
+    data.forEach(({strCategory,strMealThumb,strInstructions})=>{
+
+        let div = document.createElement("div");
+
+        let p  = document.createElement("p");
+        p.innerText=strCategory
+
+        let pa = document.createElement("p");
+        pa.innerText=strInstructions
+
+        
+        
+        let img = document.createElement("img");
+        img.src = strMealThumb
+
+        div.append(img,p,pa)
+
+
+        container.append(div);
+
+    })
+}
+
+export {getData,append,append1}
 
 
