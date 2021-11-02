@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* input{
+            width:200px;
+
+        }
+
+        #movies{
+            height: 500px;
+            width: 400px;
+            margin: auto;
+            
+            ;
+        } */
+
+        #ips{
+            margin: auto;
+            border: 1px solid green;
+            
+            width: 1024px;
+            margin: auto;
+        }
+
+        input {
+      
+      text-align: center;
+      padding: 40px 20px;
+      width: 1024px;
+      
+    }
+
+    #movies {
+      height: 1024px;
+      width: 1600px;
+      border: 1px solid black;
+      overflow: scroll;
+      border-top: none;
+      display:grid;grid-template-columns:repeat(4,25%);
+            margin: auto;
+            grid-gap:20px;
+            background-color: cornflowerblue;
+      
+    }
+   </style>
+</head>
+<body>
+    <div id="ips">
+    <input oninput="debounced(main,1000)" type="text" id="movie" placeholder="enter movie name" style="margin: auto;">
+</div>
+   
+ <div id="movies"></div>
+ 
+    
+</body>
+<script>
+    //9f331560
+    //http://www.omdbapi.com/?apikey=[yourkey]&
+//http://www.omdbapi.com/?t=dangal
+
+
+var timerid;
+
+let movies_div=document.getElementById("movies")
+
+    async function searchMovies(movie_name,imdbID){
+
+
+        try{
+            let res = await fetch(`http://www.omdbapi.com/?apikey=9f331560&s=${movie_name}`)
+
+            let data = await res.json();
+
+            //console.log(data);
+
+            return data;
+        }
+        catch(e){
+            console.log(e)
+        }
+    }
+    function appendMovies(movies){
+
+        if(movies===undefined){
+            alert ("not define");
+        }
+        movies_div.innerHTML=null
+
+        movies.forEach(function(movie){
+            let div = document.createElement("div");
+
+            let img = document.createElement("img");
+            img.src=movie.Poster
+
+            let p = document.createElement("p");
+            p.innerText=movie.Title
+
+            let pa = document.createElement("p");
+            pa.innerText=movie.Year;
+
+            let pag = document.createElement("p");
+            pag.innerText=movie.Type;
+
+            let imd = document.createElement("p");
+            imd.innerText=movie.imdbID;
+
+
+            // movies_div.append(p,img);
+
+            div.append(p,img,pa,pag,imd);
+
+        movies_div.append(div);
+        });
+    }
+   async function main(){
+
+      let name = document.getElementById("movie").value 
+
+      let res= await searchMovies(name)
+
+      let movies_data=res.Search
+
+      appendMovies(movies_data);
+      console.log(res);
+    }
+
+    function debounced(func,delay){
+
+        //funce==main() hai
+        //ave-settimeppout-func-main()-searchmovies("ave")
+        //aven-extra step-clear the privious time out-then we orward for the settimeout--fun()-mai(-searchmovies("aven"))
+    if(timerid){
+        clearTimeout(timerid)
+    }
+
+
+      timerid= setTimeout(function(){
+            func();
+        },delay)
+
+    }
+   
+    
+    
+
+
+
+    
+
+
+</script>
+</html>
+
+
